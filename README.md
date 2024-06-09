@@ -12,3 +12,10 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
   - Link: https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022
 - **Windows 10 Enterprise**
   - Link: https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise
+
+## Hardware Requirement
+>#### The lab will utilize 1 CPU core for each virtual machine
+>#### I am using 16gbs of RAM. Recommend to have at least 8gbs of RAM for the lab
+
+- *Minimum* : 2 GB on Domain Controller & 2 GB on VMs
+- *Recommend* : 4 GB on Domain Controller & 4 GB on VMs
