@@ -7,7 +7,8 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 ## Environments Used
 
 - **Oracle VM VirtualBox**
-> Link: https://www.virtualbox.org/wiki/Downloads
+  -> Link: https://www.virtualbox.org/wiki/Downloads
 - **Windows Server 2022**
+  -> Link: https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022
 - **Windows 10 Enterprise**
-
+  -> Link: https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise
