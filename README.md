@@ -20,3 +20,4 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 - *Recommend* : 4 GB on Domain Controller & 4 GB on VMs
 
 ## Network Diagram
+![network diagram](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7eca28ae-6717-4b3f-aafc-c5f59c75eda2)
