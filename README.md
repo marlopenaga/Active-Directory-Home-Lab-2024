@@ -2,7 +2,7 @@
 
 ## Description
 
-Complete step-by-step creation of an Active Directory (AD) Home Lab Environment simulating a simple corporate business network of 100 users. Utilizing PowerShell, Oracle VM Virtualbox, Windows Server 2022, and Windows 10 Enterprise to create a Domain Controller (DC) and a client user (USER) that will emulate an employee's workstation.
+Complete step-by-step creation of an Active Directory (AD) Home Lab Environment simulating a simple corporate business network of 100 users. Utilizing PowerShell, Oracle VM VirtualBox, Windows Server 2022, and Windows 10 Enterprise to create a Domain Controller (DC) and a client user (USER) that will emulate an employee's workstation.
 
 ## Environments Used
 >#### The downloads may take some time
@@ -15,10 +15,10 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
   - Link: https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise
 
 ## Hardware Requirement
->#### The lab will utilize 1 CPU core for each virtual machine. I am using 16gbs of RAM. Recommend to have at least 8gbs of RAM for the lab
+>#### The lab will utilize 1 CPU core for each virtual machine. I am using 16gbs of RAM. Recommend having at least 8gbs of RAM for the lab
 
-- *Minimum* : 2 GB on Domain Controller & 2 GB on VMs
-- *Recommend* : 4 GB on Domain Controller & 4 GB on VMs
+- *Minimum*: 2 GB on Domain Controller & 2 GB on VMs
+- *Recommend*: 4 GB on Domain Controller & 4 GB on VMs
 
 ## Network Diagram
 
@@ -33,7 +33,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 3. Inside of **AD LAB** create two folders: **AD Lab Files**, **Virtual Machines**
 
   - **AD Lab Files** is the location where the VirtualBox, Windows Server 2022 ISO, and Windows 10 Enterprise installation files will be located
-  - **Virtual Machines** is the location where we will install our VMs later using VirtualBox, which will be discussed later on
+  - **Virtual Machines** is the location where we will install our VMs later using VirtualBox, which will be discussed later
 
 ![create a new folder](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/2831f8d9-fcdc-47e5-ab5b-c50836b30af7)
 
@@ -63,7 +63,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![download the windows server iso](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/6cc9ad84-2881-4d57-a27a-62272edff41a)
 
-4. Like previously, fill in the relevant info or put "n/a" on certain  fields.
+4. Like previously, fill in the relevant info or put "n/a" on certain fields.
 
 5. Select "**64-bit edition**" link under "**ISO downloads**"
 
@@ -147,14 +147,14 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![partition the harddrive select new server](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c5fd8fd1-6b46-4c30-a358-6466ef1da216)
 
-6. The installation process will take some time and will encounter some reboots or blackscreens. Make sure not to touch any keys until the installation is complete.
+6. The installation process will take some time and will encounter some reboots or black screens. Make sure not to touch any keys until the installation is complete.
 
 ![Dont press any key during this process of boot](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/40fcc93f-c038-4745-9320-528f59243769)
 
 ![Windows Server Setting up first boot](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7d720fdb-ce80-4551-8f6b-20c653bdda5c)
 
-7. Once the installation is complete, you will prompted to create an Administrator password
-> Because this is a homelab environment we can use a rememberable universal password for the future passwords that will be created in this lab.
+7. Once the installation is complete, you will be prompted to create an Administrator password
+> Because this is a home lab environment we can use a rememberable universal password for the future passwords that will be created in this lab.
 > It is also good to create a new text file (.txt) or make a note that will store any logins and passwords that will be used throughout the course of the lab
 
 ![Type in a password for the admin DC](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/06c95c88-c1a7-4a40-b931-966f1417b6b6)
@@ -169,11 +169,11 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![after boot itll pop up windows that we can close for now](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/e52f6164-8e54-4056-9e0f-2b2545fdb81f)
 
-11. You may notice some form of input lag of the mouse cursor or keyboard, we are going to fix that by installing the **Guest Additions CD** under **Devices**->**Insert Guest Additions CD Image** make sure to click it
+11. You may notice some form of input lag of the mouse cursor or keyboard; we are going to fix that by installing the **Guest Additions CD** under **Devices**->**Insert Guest Additions CD Image** make sure to click it
 
 ![for comfort were gonna install guest addtions](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/eefa0803-165f-4be7-9205-6ea1528ddc38)
 
-12. Now go to **File(Folder icon)** -> **This PC** and select **CD Drive (D:) VirtualBox Guest Additions**
+12. Now go to **File (Folder icon)** -> **This PC** and select **CD Drive (D:) VirtualBox Guest Additions**
 
 ![go to file this pc then install guest addtions](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/e640e219-c492-4a28-8cd4-c365d981334a)
 
@@ -210,10 +210,10 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 6. We are going to configure and assign an IP address to the **INTERNAL NIC**. As the INTERNET INC will be assigned an IP address through DHCP
 
-7. Right-click->select **Properties**->**Select Internet Protocol Version 4 (TCP/IPv4)**. Were going to assign the follow address
+7. Right-click->select **Properties**->**Select Internet Protocol Version 4 (TCP/IPv4)**. We're going to assign the follow address
 - **IP address: 172.16.0.1**
 - **Subnet mask: 255.255.255.0**
-- **Defaul gateway: empty**
+- **Default gateway: empty**
 - **Preferred DNS server: 127.0.0.1**
   - This is a loopback address, where the DC will serve as its own DNS, as well as the DNS of the USER VM that will be connected to the DC
 - Then select **OK** to the changes
@@ -262,7 +262,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![create our domain](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/ea4a5a55-8087-4886-92f7-939e1b161645)
 
-9. Set a password for the Directory Services Restore Mode (DSRM). This is a home lab environment we can just make it an easy universal password we have been using. Be sure to note down every log in and password separately
+9. Set a password for the Directory Services Restore Mode (DSRM). This is a home lab environment where we can just make it an easy universal password we have been using. Be sure to note down every log in and password separately
 
 ![use our same password for the admin](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/382580ae-9de1-4a75-9db5-33e33b25a5f1)
 
@@ -299,11 +299,11 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![created an admin user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/6f3ae749-796b-484f-a30d-e9e33490beb2)
 
-6. Create a password for the Admin account then select **Password never expires** so that we can continue to use the same passowrd to log in
+6. Create a password for the admin account then select **Password never expires** so that we can continue to use the same password to log in
 
 ![create password for user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/aceb94b2-7354-4fc2-89db-b4ae97eaf904)
 
-7. Confirm everythings correct and hit **Finish**
+7. Confirm everything is correct and hit **Finish**
 
 ![confirm our settings for admin](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/468fade3-0cbc-489f-874b-3458dd7fc625)
 
@@ -344,11 +344,11 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![install routing now](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/d227b1fd-21c2-4c09-a6d8-d5ea6299f11d)
 
-6. Routing is now checked and its going to automatically check **DirectAccess and VPN (RAS)**. Hit **Next** and let it install
+6. Routing is now checked and it will automatically check **DirectAccess and VPN (RAS)**. Hit **Next** and let it install
 
 ![now its added just click next and install](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/ca36f2cb-9b83-44b5-8671-74b800f125b3)
 
-7. When its finished installing, go to **Tools** located at the top right of Server Manager. Scroll down to select **Routing and Remote Access**
+7. When it's finished installing, go to **Tools** located at the top right of Server Manager. Scroll down to select **Routing and Remote Access**
 
 ![after install go to tools and select routing and remote access](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/cf7cff20-6229-45c7-a78b-184169dc6edc)
 
@@ -389,7 +389,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![setup our scope for the internal network](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/1e3874e3-df3a-4f10-bd4f-bcefa0937cf9)
 
-6.  Referencing our network diagram we are going to input the same
+6.  Referencing our network diagram, we are going to input the same
 - **Start IP address: 172.16.0.100**
 - **End IP Address: 172.16.0.200**
 - DHCP Settings
@@ -403,7 +403,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 9. Click **Next**
 
-10. Lease Duration is how long the User VMs IP Address will be given access to our DC. This is dependent on the environment but since this is a homelab we are going to set it at **8 days**
+10. Lease Duration is how long the User VMs IP Address will be given access to our DC. This is dependent on the environment but since this is a home lab we are going to set it at **8 days**
 
 ![set lease duration to 8days for lab purposes](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/af699d00-0602-43df-964c-2450c4eed9f5)
 
@@ -414,7 +414,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 12. Now we are going to specify our router (Default Gateway)
 - Type in our set IP Address of the **INTERNAL NIC**: **172.16.0.1**
 - Make sure to select **Add**
-- Now its been added, click **Next**
+- Now it's been added, click **Next**
 
 ![add the router ip of the internal network](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/1329eb8b-8560-4e00-bf6c-cd73361b7e2a)
 
@@ -422,7 +422,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![click next and on DNS servers](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c1c6af17-4bae-4ebc-aa32-3ed0196b3a2a)
 
-14. Were going to activate our new scope, select **Yes** and hit **Next**
+14. We're going to activate our new scope, select **Yes** and hit **Next**
 
 ![yes on activate the scope](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/e858b3ca-bd42-4aba-a38b-9002920f42d7)
 
@@ -442,7 +442,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 ## Create and Add Users to the AD with a PowerShell Script
 > The following files created will be available to download
 
-1. To start go to Home screen and we are going to create a new folder in the desktop named, **Employees List**
+1. To start go to home screen and we are going to create a new folder in the desktop named, **Employees List**
 
 ![create a new folder on the desk top called Employees List](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/56b43fa0-4e50-4c49-87cd-1f6d5cb7d127)
 
@@ -452,12 +452,12 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![Create new txt files called employees and Create_Users_script](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/8a71b62e-2190-4a6e-bd6f-ccabdefa9e05)
 
-3. Open up the **names** .txt file. Here I used ChatGPT to generate a list of 100 names (First Name Last Name) and copy/paste the list into the file. Then **Save** the file
+3. Open the **names** .txt file. Here I used ChatGPT to generate a list of 100 names (First Name Last Name) and copy/paste the list into the file. Then **Save** the file
 > The amount of names is customizable, but for the lab I chose to do 100
 
 ![Here i created a list of 100 names from the help of GPT](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/bfc5d728-c8b9-4b6b-87aa-f9bc3491a995)
 
-4. Now close the **names** file and open up **Create_Users_Script** .txt file. Here I added comments to describe the purpose of each line of code
+4. Now close the **names** file and open **Create_Users_Script** .txt file. Here I added comments to describe the purpose of each line of code
 
 - "**$PASSWORD_FOR_USERS**" - You can customize the password to your liking as long it is between the " " after the equal sign
 - "**New-ADOrganizationalUnit**" then after "**-Name**" - You can customize the OU name but here I chose to do **Employees**
@@ -466,7 +466,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 5. Save **Create_Users_Script** .txt file.
 
-6. Now click **Save As**, use the same name and make sure to add "**.ps1**" at the end. This will create a new Powershell script save that we can use to automate the creation of users using **PowerShell ISE**
+6. Now click **Save As**, use the same name and make sure to add "**.ps1**" at the end. This will create a new PowerShell script save that we can use to automate the creation of users using **PowerShell ISE**
 
 ![were going to save the notepad into a ps1 file](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7f4b64f8-c22b-4749-860b-a4f2d24789a6)
 
@@ -474,7 +474,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![now start up ps ISE](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/3f99157d-8d38-4e03-8fe3-b03e7dc5b931)
 
-8. Going to open up our script we made, **File** -> **Open** -> Navigate to the desktop and select **Create_Users_Script**
+8. Going to open our script we made, **File** -> **Open** -> Navigate to the desktop and select **Create_Users_Script**
 
 ![now open and select our script file](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/0b6fe0d7-ef06-4021-8208-2cc7b0ac1ca7)
 
@@ -484,17 +484,17 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![set to unrestricted and yes to all](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/9f653741-ff1a-4f0d-9b1d-f5ced869c476)
 
-10. Last thing to do before we can run the script, go to the terminal and input the logical path of the **Create_Users_Script**
+10. Last thing to do before we can run the script, go to the terminal, and input the logical path of the **Create_Users_Script**
 - Type in: "**cd C:\users\(YOUR ADMIN USERNAME)\Desktop\Employees List\**"
 - Hit **Enter**
 
 ![were going to change directory to the script location](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/53d2eb30-adab-48d1-9098-b1018080d6e5)
 
-11. Now we are ready to run the script and see PowerShell compile and create Users into our AD
+11. Now we are ready to run the script, let PowerShell compile, and create Users into our AD
 - Select **Green Play Button** on the top task bar to run the script
 - You should see in green that it is "Creating user: xxxxxx"
 - Just let it run until the script is finished
-- There will be some errors but the reason is the list has some duplicate names
+- There will be some errors, but the reason is the list has some duplicate names
 
 ![click run and now it will create users into the AD](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/896f93d0-3a16-4574-bfea-4172b168d9f7)
 
@@ -503,14 +503,14 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![now go to AD and refresh we can see all of the users are now added under Employees OU](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/06ce0cc5-48e3-44a3-b12c-95fd1aa492df)
 
-- Congrats and now its time to set up our User VM that will connect to our DC and Internal work emulating an employee workstation
+- Congrats and now it's time to set up our User VM that will connect to our DC and Internal work emulating an employee workstation
 
 ## Creating our 2nd VM: the USER VM, Windows 10 Enterprise
-> This will connect to our Internal NIC and the DC will provide internet access through the DC's DCHP scope
+> This will connect to our Internal NIC, and the DC will provide internet access through the DC's DCHP scope
 
 1. Go back to **VirtualBox** and select **New**
 - Name: "**Client User**"
-- Folder: This is where we are going to store virtual machine. Use the same location like we did for the Windows Server. Should be **AD LAB\Virtual Machines** (Disregard my folder location in the image)
+- Folder: This is where we are going to store virtual machines. Use the same location as we did for the Windows Server. Should be **AD LAB\Virtual Machines** (Disregard my folder location in the image)
 - ISO Image: This should be in your AD Lab Files folder **AD LAB\AD Lab Files** and select the Windows ISO File
 - Check the **Skip Unattended Installation**
 
@@ -522,7 +522,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![hardware specs for vm client user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/df2bf52f-e163-48f6-9593-dc89a208b9ca)
 
-3. Like before make the **Virtual Hard Disk** to **20GB**
+3. Like before assign the **Virtual Hard Disk** to **20GB**
 
 ![make 20 gb for vm client user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/62e6dea6-b0bb-476c-b3da-e621e7bb3798)
 
@@ -543,7 +543,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![now start up the vm client user and click next and partition the drive](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/b8dc753e-a5c2-4588-b715-83a2d2de149f)
 
-7. It may take a while and let Windows install and don't touch any key until Windows is finished
+7. It may take a while and let Windows install and do not touch any keys until Windows is finished
 
 ![let the windows 10 install vm client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/8c10ace6-9bdc-4c6a-ae6d-b930005c4a86)
 
@@ -568,10 +568,10 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![select no for these options vm client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/63e192f0-bdde-485f-a8a9-921fc92a8991)
 
-Finally our Client User VM is now set up with Windows
+Finally, our Client User VM is now set up with Windows
 
 ## Renaming our PC and Joining our Domain Controller
-> Final step of our Network Diagram and journey of this lab. Here we are going to simulate an employee logging in and joining the corporate business network for the first time
+> Last step of our Network Diagram and journey of this lab. Here we are going to simulate an employee logging in and joining the corporate business network for the first time
 
 1. From the home screen, go to **Settings** -> **About** -> Select **Rename this PC (advanced)**
 
@@ -592,7 +592,7 @@ Finally our Client User VM is now set up with Windows
 4. We are going to be prompted to enter a Username and Password that exist in the Active Directory
 - These credentials can be one of the **Employees** that we created or our **Admin account**
 - If you want to use an **Employees Log in** go back to the DC VM and browse in the **Active Directory Users and Computers** and under the **Employees** OU double-click any of the list. The password should be the universal password that was in the **PowerShell** script
-- And again it is good to keep note of all the log in credentials for this lab for reference
+- And again, it is good to keep note of all the log in credentials for this lab for reference
 
 ![now we can connect to our domain lets select one of our employees to log into the domain](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/3c0c1552-29fd-4e83-a66a-5effea8bc418)
 
@@ -600,7 +600,7 @@ Finally our Client User VM is now set up with Windows
 
 ![here we going to select the first name as an example and use the username and universal password](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/28c56e73-8d92-47a6-bc6b-ec8549bb783d)
 
-- During this time of the lab I used my Admin account but either is fine and will work
+- During this time of the lab I used my Admin account but either is fine or will work
 
 ![going to log in with our admin account we made before](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/26c63e39-fdd2-4604-989e-737fcc586130)
 
@@ -608,7 +608,7 @@ Finally our Client User VM is now set up with Windows
 
 ![now that its success were going to restart the pc vc client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7d289743-206f-4af5-abc5-6ea28cd80935)
 
-6. Last step, once it is done restarting we can now log in with any accounts in the **Employees OU** or the **Admin Account** by selecting **Other User** and logging in
+6. Last step, once it is done restarting, we can now log in with any accounts in the **Employees OU** or the **Admin Account** by selecting **Other User** and logging in
 
 ![now lets try to log in as one of the employees we created](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/d9e6a1bc-4ee7-4bb0-8dfb-fc27eac5dc32)
 
@@ -618,7 +618,7 @@ We have completed the network diagram we started!
 
 # Congratulations
 
-We are all done with the **Active Directory Home Lab**! The purpose of this lab is to create and simulate a simple corporate network that uses AD to manage and secure multiple users in an environment. The next steps would be to add layers of defense in depth into the simple network to further harden the environment and maintain business conintuity. Additional you can further structure and organize Employees (users) into groups such as: Marketing, IT, Sales, and Exceutive. Again this is just a simple beginner home lab project, thank you for your time and hope you enjoyed this lab!
+We are all done with the **Active Directory Home Lab**! The purpose of this lab is to create and simulate a simple corporate network that uses AD to manage and secure multiple users in an environment. The next steps would be to add layers of defense in depth into the simple network to further harden the environment and maintain business continuity. Additional you can further structure and organize Employees (users) into groups such as: Marketing, IT, Sales, and Executive. Again, this is just a simple home lab project, thank you for your time and hope you enjoyed this lab!
 
 ## Credits
 
