@@ -114,7 +114,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 8. Before we boot up the Virtual Machine, first we are going to adjust the setting of the DC VM
 
-9. Select the DC VM->Settings->General->**Advanced tab**. Set **Shared Clipboard** and **Drag'n'Drop** to **Bidirectional**
+9. Select the DC VM -> Settings -> General -> **Advanced tab**. Set **Shared Clipboard** and **Drag'n'Drop** to **Bidirectional**
 > This will allow us the ability to Copy/Paste and Drag/Drop things between the computer and VMs.
 
 ![dc settings and select bidirectional for both server](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/acd6edb6-1250-4d38-9b6d-f2a552d2e52c)
@@ -159,7 +159,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![Type in a password for the admin DC](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/06c95c88-c1a7-4a40-b931-966f1417b6b6)
 
-8. Now we have successfully booted up our Administrator account and to unlock the login screen, go to **Input**->**Keyboard**->**Insert Ctrl+Alt+Del** of the top taskbar of VirtualBox
+8. Now we have successfully booted up our Administrator account and to unlock the login screen, go to **Input** -> **Keyboard** -> **Insert Ctrl+Alt+Del** of the top taskbar of VirtualBox
 
 ![success 1st boot of admin then click this to login](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c7e465d0-e09a-45d8-bb6e-5a9b113c16fb)
 
@@ -173,7 +173,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ![for comfort were gonna install guest addtions](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/eefa0803-165f-4be7-9205-6ea1528ddc38)
 
-12. Now go to **File(Folder icon)**->**This PC** and select **CD Drive (D:) VirtualBox Guest Additions**
+12. Now go to **File(Folder icon)** -> **This PC** and select **CD Drive (D:) VirtualBox Guest Additions**
 
 ![go to file this pc then install guest addtions](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/e640e219-c492-4a28-8cd4-c365d981334a)
 
