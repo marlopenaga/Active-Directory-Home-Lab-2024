@@ -238,7 +238,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 2. Select **Add roles and features**
 
-![Rename PC to DC](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/32b491cd-5db0-4e80-8036-358f1a67a9f3)
+![open server manager and click add roles](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7b942dab-c25a-4ae5-aebb-3d007ca21689)
 
 3. Click **Next** and make sure the server **DC** is selected
 
@@ -367,3 +367,74 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 11. Done we have added **RAS/NAT** and you may need to right-click on the **DC** to **refresh**. But now on the side the icons should display that they are up and running
 
 ![success now we add RAS](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/f96895ba-9db5-4be8-962d-18cd8b553225)
+
+## Setup a DHCP Server in the DC
+> This will our DC to distribute IP addresses to Users connected in our Internal network in turn will allow the User VM to access the internet
+
+1. Go back to **Server Manager** -> select **Add Roles and Features** -> **Click DHCP Server**
+
+2. Click **Add Features** and continue to start the installation process
+
+![add DHCP from add roles](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/911fc6f1-19f3-4cc8-8894-9eec812e2808)
+
+3.  Once the installation is completed, close it and go back to **Tools** at the top-right -> and select **DHCP**
+
+![tools then select DHCP](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/9bd46fe4-4ecf-4026-9847-c8134fb6d1d1)
+
+4.  Click the drop arrows of **DC** and **IPv4**. Right-click **IPv4** -> select **New scope**. This is where we will create a range of IP addresses for users connecting to the DC (as shown in our network diagram)
+
+![right click IPv4 and new scope](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/9b12548c-56d5-45d1-80ea-971f8bb38bbc)
+
+5.  It is going to prompt us to name the scope: **172.16.0.100-200** then select **Next**
+
+![setup our scope for the internal network](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/1e3874e3-df3a-4f10-bd4f-bcefa0937cf9)
+
+6.  Referencing our network diagram we are going to input the same
+- **Start IP address: 172.16.0.100**
+- **End IP Address: 172.16.0.200**
+- DHCP Settings
+- **Length: 24**
+- **Subnet mask: 255.255.255.0**
+
+![address the ip range for the scope](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/55d10ed2-b45a-4af6-bd48-e1910dca7976)
+
+> Here is our network diagram and we are at the **DHCP (1 Scope)** for reference
+![network diagram](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/df8618dd-afdc-40ae-84ba-f648da802e22)
+
+9. Click **Next**
+
+10. Lease Duration is how long the User VMs IP Address will be given access to our DC. This is dependent on the environment but since this is a homelab we are going to set it at **8 days**
+
+![set lease duration to 8days for lab purposes](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/af699d00-0602-43df-964c-2450c4eed9f5)
+
+11. Select **Yes** to configure our options and continue
+
+![select yes for configure DHCP options](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/8b90ee2b-c20e-4746-988f-f137c31b8ea7)
+
+12. Now we are going to specify our router (Default Gateway)
+- Type in our set IP Address of the **INTERNAL NIC**: **172.16.0.1**
+- Make sure to select **Add**
+- Now its been added, click **Next**
+
+![add the router ip of the internal network](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/1329eb8b-8560-4e00-bf6c-cd73361b7e2a)
+
+13. Click **next** again
+
+![click next and on DNS servers](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c1c6af17-4bae-4ebc-aa32-3ed0196b3a2a)
+
+14. Were going to activate our new scope, select **Yes** and hit **Next**
+
+![yes on activate the scope](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/e858b3ca-bd42-4aba-a38b-9002920f42d7)
+
+15. For assurance we are going to right-click our **domain name** -> select **Authorize**
+
+![now authorize the dc server by right clicking](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/2cfa4c1f-5290-49ce-b6d8-d2cfd03fa071)
+
+16. Right-click the **domain name** again and select **Refresh**
+
+![click refresh on dc server](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/d2476d88-f1a0-4868-9a63-4805fd924ecd)
+
+17. Now we can see our **IPv4** is up and running including our newly added scope
+> Under the **Address Leases** there is nothing yet but later on once we setup our User VM next, this is where you can see the User VMs Address Lease
+
+![now our DHCP is up and running](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c8b6c825-e3ff-45d0-9601-0ebfe3a042f1)
