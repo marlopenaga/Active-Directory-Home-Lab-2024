@@ -504,3 +504,122 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 ![now go to AD and refresh we can see all of the users are now added under Employees OU](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/06ce0cc5-48e3-44a3-b12c-95fd1aa492df)
 
 - Congrats and now its time to set up our User VM that will connect to our DC and Internal work emulating an employee workstation
+
+## Creating our 2nd VM: the USER VM, Windows 10 Enterprise
+> This will connect to our Internal NIC and the DC will provide internet access through the DC's DCHP scope
+
+1. Go back to **VirtualBox** and select **New**
+- Name: "**Client User**"
+- Folder: This is where we are going to store virtual machine. Use the same location like we did for the Windows Server. Should be **AD LAB\Virtual Machines** (Disregard my folder location in the image)
+- ISO Image: This should be in your AD Lab Files folder **AD LAB\AD Lab Files** and select the Windows ISO File
+- Check the **Skip Unattended Installation**
+
+![create a new vm client user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/809be623-eba7-440f-b345-b13c4468d43a)
+
+2. For hardware specs, feel free to go above than depicted but I used the minimum specifications
+- **2048MB or 2GB**
+- **1 CPU**
+
+![hardware specs for vm client user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/df2bf52f-e163-48f6-9593-dc89a208b9ca)
+
+3. Like before make the **Virtual Hard Disk** to **20GB**
+
+![make 20 gb for vm client user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/62e6dea6-b0bb-476c-b3da-e621e7bb3798)
+
+4. Now that the VM is added, go to **Settings** -> **General** -> Turn on **Bidirectional** for both **Shared Clipboard & Drag'n'Drop**
+
+![turn on bidirectional for vm client user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/69757c74-38c0-4a04-a09f-a6eae7ba5eec)
+
+5. Go to **Network** in settings, here we are only using **Adapter 1** our INTERNAL NIC
+- Change **Attached to: Internal Network**
+- Name: **intranet** , the name we set for our INTERNAL NIC
+
+![switch adapter 1 to internal network](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/ff531f3d-735b-49de-abbb-0be3c5edf80f)
+
+6. Now we can **boot up** our Client User VM in VirtualBox
+- Select your appropriate language and region
+- Continue to hit **Next** until we get to where we want to install windows prompt
+- Select **New** and accept the given conditions so that we can partition the drive
+
+![now start up the vm client user and click next and partition the drive](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/b8dc753e-a5c2-4588-b715-83a2d2de149f)
+
+7. It may take a while and let Windows install and don't touch any key until Windows is finished
+
+![let the windows 10 install vm client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/8c10ace6-9bdc-4c6a-ae6d-b930005c4a86)
+
+![just let everything install vm client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/3b7fa9b4-ce34-43fd-9792-5a625ca92649)
+
+8. Once it is done, Windows will ask you for a network to connect
+- Select **I don't have internet**
+
+![after filling in your language and region click i dont have internet](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/f26ebbaa-39c1-48c2-8b7a-31333e2590c0)
+
+9. Here Select **Continue with limited setup**
+
+![select continue with limited setup vm client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/93709e6e-b048-4f92-b824-756f05a4e45f)
+
+10. When it comes to inputting a user and password, this is just for creating a Windows account and not important
+- For the name I just used **User**
+- For the password it is not need so skip it and select **Next**
+
+![just name it user for now](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/30fd3857-aaf9-460c-b496-6448bb9c29c8)
+
+11. These privacy settings just put **No** on all and **No** on other Microsoft setups
+
+![select no for these options vm client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/63e192f0-bdde-485f-a8a9-921fc92a8991)
+
+Finally our Client User VM is now set up with Windows
+
+## Renaming our PC and Joining our Domain Controller
+> Final step of our Network Diagram and journey of this lab. Here we are going to simulate an employee logging in and joining the corporate business network for the first time
+
+1. From the home screen, go to **Settings** -> **About** -> Select **Rename this PC (advanced)**
+
+![now go to settings-about-rename this pc](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/880ad71d-1f9b-48cb-90c7-2827b26a0744)
+
+2. Inside the Properties window select **Change...**
+
+![select this to change name vm client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/0b2ee0be-2b0c-4632-91a5-2035a54f98d6)
+
+3. Here we are going to Rename this PC and make the PC a member of our domain
+- For the name I used **USER1**
+- Select **Domain** and type in your exact domain
+- Hit **Ok**
+- The PC is going to contact our domain to establish a connection
+
+![type in the name and our domain client user](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/37deebfe-8aa8-4ff6-b403-3f42487cebc4)
+
+4. We are going to be prompted to enter a Username and Password that exist in the Active Directory
+- These credentials can be one of the **Employees** that we created or our **Admin account**
+- If you want to use an **Employees Log in** go back to the DC VM and browse in the **Active Directory Users and Computers** and under the **Employees** OU double-click any of the list. The password should be the universal password that was in the **PowerShell** script
+- And again it is good to keep note of all the log in credentials for this lab for reference
+
+![now we can connect to our domain lets select one of our employees to log into the domain](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/3c0c1552-29fd-4e83-a66a-5effea8bc418)
+
+- Showing how to access an **Employees log in** 
+
+![here we going to select the first name as an example and use the username and universal password](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/28c56e73-8d92-47a6-bc6b-ec8549bb783d)
+
+- During this time of the lab I used my Admin account but either is fine and will work
+
+![going to log in with our admin account we made before](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/26c63e39-fdd2-4604-989e-737fcc586130)
+
+5. Afterwards it is going to prompt us to restart the VM to apply the changes
+
+![now that its success were going to restart the pc vc client](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7d289743-206f-4af5-abc5-6ea28cd80935)
+
+6. Last step, once it is done restarting we can now log in with any accounts in the **Employees OU** or the **Admin Account** by selecting **Other User** and logging in
+
+![now lets try to log in as one of the employees we created](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/d9e6a1bc-4ee7-4bb0-8dfb-fc27eac5dc32)
+
+We have completed the network diagram we started!
+
+![network diagram](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c1c334df-af50-490a-8bb3-061c31dc3ac9)
+
+# Congratulations
+
+We are all done with the **Active Directory Home Lab**! The purpose of this lab is to create and simulate a simple corporate network that uses AD to manage and secure multiple users in an environment. The next steps would be to add layers of defense in depth into the simple network to further harden the environment and maintain business conintuity. Additional you can further structure and organize Employees (users) into groups such as: Marketing, IT, Sales, and Exceutive. Again this is just a simple beginner home lab project, thank you for your time and hope you enjoyed this lab!
+
+## Credits
+
+This project was made with the guidance of Josh Makador's Video can be found here: https://www.youtube.com/watch?v=MHsI8hJmggI&t=831s&ab_channel=JoshMadakor
