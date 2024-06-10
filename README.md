@@ -22,20 +22,20 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 
 ## Network Diagram
 
-![network diagram](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7eca28ae-6717-4b3f-aafc-c5f59c75eda2)
+![](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/blob/main/images/AD%20LAB%201.PNG?raw=true)
 
 ## Creating a Designated Save Location for the VMS and Files
 
 1. Create a new folder called "**AD LAB**" in a location with the most space. Here I created it in my D: drive
 
-![create a new folder in ur harddrive and name it AD LAB](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/435c25ac-f98a-4b37-b81b-5841b37e41aa)
+![](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/blob/main/images/AD%20LAB%202.PNG?raw=true)
 
 3. Inside of **AD LAB** create two folders: **AD Lab Files**, **Virtual Machines**
 
   - **AD Lab Files** is the location where the VirtualBox, Windows Server 2022 ISO, and Windows 10 Enterprise installation files will be located
   - **Virtual Machines** is the location where we will install our VMs later using VirtualBox, which will be discussed later
 
-![create a new folder](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/2831f8d9-fcdc-47e5-ab5b-c50836b30af7)
+![](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/blob/main/images/AD%20LAB%203.PNG?raw=true)
 
 ## Download Windows 10 Enterprise
 
@@ -399,7 +399,7 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 ![address the ip range for the scope](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/55d10ed2-b45a-4af6-bd48-e1910dca7976)
 
 > Here is our network diagram and we are at the **DHCP (1 Scope)** for reference
-![network diagram](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/df8618dd-afdc-40ae-84ba-f648da802e22)
+![](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/blob/main/images/AD%20LAB%201.PNG?raw=true)
 
 9. Click **Next**
 
@@ -614,7 +614,7 @@ Finally, our Client User VM is now set up with Windows
 
 We have completed the network diagram we started!
 
-![network diagram](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c1c334df-af50-490a-8bb3-061c31dc3ac9)
+![](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/blob/main/images/AD%20LAB%201.PNG?raw=true)
 
 # Congratulations
 
