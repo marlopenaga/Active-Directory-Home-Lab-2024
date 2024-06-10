@@ -622,4 +622,4 @@ We are all done with the **Active Directory Home Lab**! The purpose of this lab 
 
 ## Credits
 
-This project was made with the guidance of Josh Makador's Video can be found here: https://www.youtube.com/watch?v=MHsI8hJmggI&t=831s&ab_channel=JoshMadakor
+This project was made with the guidance of Josh Madakor's Video can be found here: https://www.youtube.com/watch?v=MHsI8hJmggI&t=831s&ab_channel=JoshMadakor
