@@ -438,3 +438,69 @@ Complete step-by-step creation of an Active Directory (AD) Home Lab Environment 
 > Under the **Address Leases** there is nothing yet but later on once we setup our User VM next, this is where you can see the User VMs Address Lease
 
 ![now our DHCP is up and running](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/c8b6c825-e3ff-45d0-9601-0ebfe3a042f1)
+
+## Create and Add Users to the AD with a PowerShell Script
+> The following files created will be available to download
+
+1. To start go to Home screen and we are going to create a new folder in the desktop named, **Employees List**
+
+![create a new folder on the desk top called Employees List](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/56b43fa0-4e50-4c49-87cd-1f6d5cb7d127)
+
+2. Inside of the **Employees List** folder, create two .txt files
+- "**Create_Users_Script**"
+- "**employees**"
+
+![Create new txt files called employees and Create_Users_script](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/8a71b62e-2190-4a6e-bd6f-ccabdefa9e05)
+
+3. Open up the **names** .txt file. Here I used ChatGPT to generate a list of 100 names (First Name Last Name) and copy/paste the list into the file. Then **Save** the file
+> The amount of names is customizable, but for the lab I chose to do 100
+
+![Here i created a list of 100 names from the help of GPT](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/bfc5d728-c8b9-4b6b-87aa-f9bc3491a995)
+
+4. Now close the **names** file and open up **Create_Users_Script** .txt file. Here I added comments to describe the purpose of each line of code
+
+- "**$PASSWORD_FOR_USERS**" - You can customize the password to your liking as long it is between the " " after the equal sign
+- "**New-ADOrganizationalUnit**" then after "**-Name**" - You can customize the OU name but here I chose to do **Employees**
+
+![This is the code that will create new users in the AD from the employees list](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/11b2ad9f-ccc8-4d86-af51-fce394d432dd)
+
+5. Save **Create_Users_Script** .txt file.
+
+6. Now click **Save As**, use the same name and make sure to add "**.ps1**" at the end. This will create a new Powershell script save that we can use to automate the creation of users using **PowerShell ISE**
+
+![were going to save the notepad into a ps1 file](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/7f4b64f8-c22b-4749-860b-a4f2d24789a6)
+
+7. Open up **Windows PowerShell ISE**, **Windows Start Icon** -> **Right-click PowerShell ISE** -> **More** -> Select **Run as administrator**
+
+![now start up ps ISE](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/3f99157d-8d38-4e03-8fe3-b03e7dc5b931)
+
+8. Going to open up our script we made, **File** -> **Open** -> Navigate to the desktop and select **Create_Users_Script**
+
+![now open and select our script file](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/0b6fe0d7-ef06-4021-8208-2cc7b0ac1ca7)
+
+9. We see our script loaded in but before we run it, we must go into the terminal to allow the script to run
+- Type in the following "**Set-ExecutionPolicy Unrestricted**".
+- Select **Yes to All**
+
+![set to unrestricted and yes to all](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/9f653741-ff1a-4f0d-9b1d-f5ced869c476)
+
+10. Last thing to do before we can run the script, go to the terminal and input the logical path of the **Create_Users_Script**
+- Type in: "**cd C:\users\(YOUR ADMIN USERNAME)\Desktop\Employees List\**"
+- Hit **Enter**
+
+![were going to change directory to the script location](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/53d2eb30-adab-48d1-9098-b1018080d6e5)
+
+11. Now we are ready to run the script and see PowerShell compile and create Users into our AD
+- Select **Green Play Button** on the top task bar to run the script
+- You should see in green that it is "Creating user: xxxxxx"
+- Just let it run until the script is finished
+- There will be some errors but the reason is the list has some duplicate names
+
+![click run and now it will create users into the AD](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/896f93d0-3a16-4574-bfea-4172b168d9f7)
+
+12. To check our work lets go to **Active Directory Users and Computers** -> **Right-click your Domain name** -> Select **Refresh**.
+- And now under our new OU **Employees** the list of names from the list are now added as employees in the network. Each with a username and login following the same naming conventions.
+
+![now go to AD and refresh we can see all of the users are now added under Employees OU](https://github.com/marlopenaga/Active-Directory-Home-Lab-2024/assets/165770329/06ce0cc5-48e3-44a3-b12c-95fd1aa492df)
+
+- Congrats and now its time to set up our User VM that will connect to our DC and Internal work emulating an employee workstation
