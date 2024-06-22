@@ -619,7 +619,3 @@ We have completed the network diagram we started!
 # Congratulations
 
 We are all done with the **Active Directory Home Lab**! The purpose of this lab is to create and simulate a simple corporate network that uses AD to manage and secure multiple users in an environment. The next steps would be to add layers of defense in depth into the simple network to further harden the environment and maintain business continuity. Additional you can further structure and organize Employees (users) into groups such as: Marketing, IT, Sales, and Executive. Again, this is just a simple home lab project, thank you for your time and hope you enjoyed this lab!
-
-## Credits
-
-This project was made with the guidance of Josh Madakor's Video can be found here: https://www.youtube.com/watch?v=MHsI8hJmggI&t=831s&ab_channel=JoshMadakor
